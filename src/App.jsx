@@ -13,7 +13,26 @@ const post = {
   body: 'This is the first post in Hacker Stories'
 }
 
-const people = [ "Peter", "Paul", "Andrew", "Joshua", "Eric"]
+const list = [
+  {
+    title: 'React',
+    url: 'https://reactjs.org/',
+    author: 'Jordan Walke',
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+    date: new Date(112233448448),
+  },
+  {
+    title: 'Redux',
+    url: 'https://redux.js.org/',
+    author: 'Dan Abramov, Andrew Clark',
+    num_comments: 2,
+    points: 5,
+    objectID: 1,
+    date: new Date(1122445566),
+  },
+];
 
 function App() {
 
@@ -25,16 +44,21 @@ function App() {
       <input id='search' type='text' />
 
       <div>
-        <h2>
-          {post.author}
-        </h2>
-        <h3>Post # {post.id}</h3>
-        <h4>Created on {post.date}</h4>
-        <p>{post.body}</p>
-      </div>
-
-      <div>
-        {/* {people.map(person => person.name)} */}
+      <ul>
+        {list.map(function (item) {
+          return (
+            <li key={item.objectID}>
+              <span>
+                <a href={item.url}>{item.title}</a>
+              </span>
+              <span>{item.author}</span>
+              <span>{item.num_comments}</span>
+              <span>{item.points}</span>
+              <span>{item.date.toDateString()}</span>
+            </li>
+          );
+        })}
+      </ul>
       </div>
 
     </div>
